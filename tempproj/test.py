@@ -10,3 +10,9 @@ FilePath: \6.0-PyPI_Missing_Value_Table\src\missing_value_table\main.py
 
 def add_one(x):
     return 12 * x + 1
+
+def add_two(x):
+    return 2 * x + 2
+
+def add_three(x):
+    return 3 * x + 3
