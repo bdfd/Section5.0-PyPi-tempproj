@@ -13,7 +13,7 @@ Package function description
 
 ## Installation
 
-`pip install package-name`
+`pip install tempproj`
 
 ## How to use it?
 
@@ -27,4 +27,4 @@ This repository is licensed under the MIT license. See LICENSE for details.
 
 ### References
 
-https://github.com/bdfd/3.1-PyPI_Template
+https://github.com/bdfd/Section5.0-Sample_Project

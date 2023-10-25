@@ -15,7 +15,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-VERSION = '1.0.2'
+VERSION = '1.1.0'
 DESCRIPTION = 'Here is for testing package please dont import this one, Just for self testing purpose.'
 PACKAGE_NAME = 'tempproj'
 
