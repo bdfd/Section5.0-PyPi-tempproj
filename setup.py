@@ -2,7 +2,7 @@
 Date         : 2023-01-30 12:19:11
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-10-25 14:52:22
+LastEditTime : 2023-11-06 15:27:49
 LastEditors  : BDFD
 Description  : 
 FilePath     : \setup.py
@@ -15,7 +15,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-VERSION = '3.0.0'
+VERSION = '3.1.0'
 DESCRIPTION = 'Here is for testing package please dont import this one, Just for self testing purpose.'
 PACKAGE_NAME = 'tempproj'
 
