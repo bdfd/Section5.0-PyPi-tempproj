@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-06 15:23:14
+LastEditTime : 2023-11-06 17:20:34
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -20,7 +20,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import GradientBoostingClassifier
 
 
-def Car_Prediction():
+def Car_Prediction_0601(para_list):
     '''
         Linear Regression Model
         For Section6.Project01-Car-Price-Predictor
@@ -36,16 +36,21 @@ def Car_Prediction():
         X, y, test_size=0.13, random_state=14)
     ohe = OneHotEncoder()
     ohe.fit(X[['name', 'company', 'fuel_type']])
-    model = LinearRegression()
+    lr_tunning = LinearRegression()
     column_transformation = make_column_transformer((
         OneHotEncoder(categories=ohe.categories_), ['name', 'company', 'fuel_type']),
         remainder='passthrough')
-    pipe = make_pipeline(column_transformation, model)
-    pipe.fit(X_train, y_train)
-    return pipe
+    model = make_pipeline(column_transformation, lr_tunning)
+    model.fit(X_train, y_train)
+    df_sample_columns = ['name', 'company', 'year', 'kms_driven', 'fuel_type']
+    test_sample = (pd.DataFrame(columns=df_sample_columns, data=np.array([para_list[0], para_list[1],
+                                                                          para_list[2], para_list[3],
+                                                                          para_list[4]]).reshape(1, 5)))
+    result = (model.predict(test_sample))[0]
+    return result
 
 
-def Tele_Customer_Churn_0602():
+def Tele_Customer_Churn_0602(para_list):
     '''
         Tree Type Logistic Regression Model
         For Section6.Project01-Car-Price-Predictor
@@ -59,7 +64,7 @@ def Tele_Customer_Churn_0602():
         encoding='utf-8')
     target_feature = 'Churn'
 
-    #split the dataset and prepare for modeling prediction
+    # split the dataset and prepare for modeling prediction
     X, y = exe.data_preprocessing.sep(df_1, target_feature)
     st = SMOTEENN()
     X_st, y_st = st.fit_resample(X, y)
@@ -80,4 +85,15 @@ def Tele_Customer_Churn_0602():
     sample_le = exe.data_preprocessing.fit_label_encode(
         df_sample, df_sample.columns)
 
-    return gbc_tunning, sample_le
+    df_sample_columns = ['SeniorCitizen', 'Partner', 'Dependents', 'tenure',
+                         'OnlineSecurity', 'TechSupport', 'Contract',
+                         'PaperlessBilling', 'PaymentMethod']
+    test_sample = (pd.DataFrame(columns=df_sample_columns, data=np.array(
+        [para_list[0], para_list[1], para_list[2], para_list[3],
+         para_list[4], para_list[5], para_list[6], para_list[7],
+         para_list[8]]).reshape(1, 9)))
+    transformed_sample_df = exe.data_preprocessing.transform_label_encode(
+        test_sample, test_sample.columns, sample_le)
+    transformed_sample_df['MonthlyCharges'] = para_list[9]
+    result = (gbc_tunning.predict(transformed_sample_df))[0]
+    return result
