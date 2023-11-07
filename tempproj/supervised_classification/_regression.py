@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-06 17:20:34
+LastEditTime : 2023-11-07 10:26:26
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -31,17 +31,21 @@ def Car_Prediction_0601(para_list):
         encoding='utf-8')
     df = df.iloc[:, 1:]
     target_variable = 'Price'
+
     X, y = exe.data_preprocessing.sep(df, target_variable)
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.13, random_state=14)
     ohe = OneHotEncoder()
     ohe.fit(X[['name', 'company', 'fuel_type']])
+
     lr_tunning = LinearRegression()
+
     column_transformation = make_column_transformer((
         OneHotEncoder(categories=ohe.categories_), ['name', 'company', 'fuel_type']),
         remainder='passthrough')
     model = make_pipeline(column_transformation, lr_tunning)
     model.fit(X_train, y_train)
+
     df_sample_columns = ['name', 'company', 'year', 'kms_driven', 'fuel_type']
     test_sample = (pd.DataFrame(columns=df_sample_columns, data=np.array([para_list[0], para_list[1],
                                                                           para_list[2], para_list[3],
@@ -88,12 +92,15 @@ def Tele_Customer_Churn_0602(para_list):
     df_sample_columns = ['SeniorCitizen', 'Partner', 'Dependents', 'tenure',
                          'OnlineSecurity', 'TechSupport', 'Contract',
                          'PaperlessBilling', 'PaymentMethod']
+
     test_sample = (pd.DataFrame(columns=df_sample_columns, data=np.array(
         [para_list[0], para_list[1], para_list[2], para_list[3],
          para_list[4], para_list[5], para_list[6], para_list[7],
          para_list[8]]).reshape(1, 9)))
+
     transformed_sample_df = exe.data_preprocessing.transform_label_encode(
         test_sample, test_sample.columns, sample_le)
     transformed_sample_df['MonthlyCharges'] = para_list[9]
     result = (gbc_tunning.predict(transformed_sample_df))[0]
+
     return result
