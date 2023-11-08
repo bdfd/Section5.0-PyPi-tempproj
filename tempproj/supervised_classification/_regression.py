@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-07 10:26:26
+LastEditTime : 2023-11-08 13:10:24
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -61,10 +61,10 @@ def Tele_Customer_Churn_0602(para_list):
         Github_Project:'https://github.com/bdfd/Section6.Project02-Telco_Customer_Churning_Prediction'
     '''
     df_1 = pd.read_csv(
-        'https://raw.githubusercontent.com/bdfd/Section6.Project02-Telco_Customer_Churning_Prediction/main/1.0%20dataset/S602_Mungged.csv',
+        'https://raw.githubusercontent.com/bdfd/Section6.Project02-Telco_Customer_Churning_Prediction/main/1.0%20dataset/S602_Munged_Data.csv',
         encoding='utf-8')
     df_2 = pd.read_csv(
-        'https://raw.githubusercontent.com/bdfd/Section6.Project02-Telco_Customer_Churning_Prediction/main/1.0%20dataset/S602_Preprocessed.csv',
+        'https://raw.githubusercontent.com/bdfd/Section6.Project02-Telco_Customer_Churning_Prediction/main/1.0%20dataset/S602_Preprocessed_Data.csv',
         encoding='utf-8')
     target_feature = 'Churn'
 

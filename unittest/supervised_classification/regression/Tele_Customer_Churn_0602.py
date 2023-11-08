@@ -1,20 +1,21 @@
 '''
-Date         : 2023-11-06 14:45:20
+Date         : 2023-11-08 12:57:48
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-06 17:22:32
+LastEditTime : 2023-11-08 13:11:30
 LastEditors  : BDFD
-Description  :
+Description  : 
 FilePath     : \unittest\supervised_classification\regression\Tele_Customer_Churn_0602.py
-Copyright (c) 2023 by BDFD, All Rights Reserved.
+Copyright (c) 2023 by BDFD, All Rights Reserved. 
 '''
+
 import pandas as pd
 import numpy as np
 import execdata as exe
 import tempproj as temp
 
 para_list = []
-SeniorCiitizen = 0
+SeniorCiitizen = 'Yes'
 para_list.append(SeniorCiitizen)
 Partner = 'No'
 para_list.append(Partner)
@@ -30,7 +31,7 @@ Contract = 'Two year'
 para_list.append(Contract)
 PaperlessBilling = 'Yes'
 para_list.append(PaperlessBilling)
-PaymentMethod = 'Credit card'
+PaymentMethod = 'Credit Card'
 para_list.append(PaymentMethod)
 MonthlyCharges = 79.75
 para_list.append(MonthlyCharges)
@@ -40,4 +41,3 @@ result = temp.supervised_classification.Tele_Customer_Churn_0602(para_list)
 # result = model.predict(transformed_sample_df)
 print(result)
 print(type(result))
-
