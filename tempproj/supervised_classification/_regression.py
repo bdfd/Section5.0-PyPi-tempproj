@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-08 15:23:10
+LastEditTime : 2023-11-08 18:01:21
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -67,7 +67,6 @@ def Tele_Customer_Churn_0602(para_list):
         'https://raw.githubusercontent.com/bdfd/Section6.Project02-Telco_Customer_Churning_Prediction/main/1.0%20dataset/S602_Preprocessed_Data.csv',
         encoding='utf-8')
     target_feature = 'Churn'
-
     # split the dataset and prepare for modeling prediction
     X, y = exe.data_preprocessing.sep(df_1, target_feature)
     st = SMOTEENN()
@@ -82,23 +81,25 @@ def Tele_Customer_Churn_0602(para_list):
 
     # prepare for transformed incoming data
     desire_list = df_1.columns.tolist()
+    # print("before delete:", desire_list)
     del desire_list[-2:]
-    # print(desire_list)
+    del desire_list[3]
+    # print("after delete item:", desire_list)
     df_sample = exe.data_preprocessing.column_not_drop(df_2, desire_list)
+    print(df_sample.columns.tolist())
     sample_le = exe.data_preprocessing.fit_label_encode(
         df_sample, df_sample.columns)
-
-    df_sample_columns = ['SeniorCitizen', 'Partner', 'Dependents', 'tenure',
-                         'OnlineSecurity', 'TechSupport', 'Contract',
-                         'PaperlessBilling', 'PaymentMethod']
+    df_sample_columns = df_sample.columns.tolist()
 
     test_sample = (pd.DataFrame(columns=df_sample_columns, data=np.array(
-        [para_list[0], para_list[1], para_list[2], para_list[3],
+        [para_list[0], para_list[1], para_list[2],
          para_list[4], para_list[5], para_list[6], para_list[7],
-         para_list[8]]).reshape(1, 9)))
-
+         para_list[8]]).reshape(1, 8)))
+    print(test_sample.columns.tolist())
     transformed_sample_df = exe.data_preprocessing.transform_label_encode(
         test_sample, test_sample.columns, sample_le)
+
+    transformed_sample_df['tenure'] = para_list[3]
     transformed_sample_df['MonthlyCharges'] = para_list[9]
     result = (gbc_tunning.predict(transformed_sample_df))[0]
 
