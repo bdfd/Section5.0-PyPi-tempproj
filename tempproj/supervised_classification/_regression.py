@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-08 13:10:24
+LastEditTime : 2023-11-08 15:23:10
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -76,8 +76,7 @@ def Tele_Customer_Churn_0602(para_list):
     X_train_sap, X_test_sap, y_train_sap, y_test_sap = train_test_split(
         X_st, y_st, test_size=0.2)
     # GradientBoostingClassifier
-    gbc_tunning = GradientBoostingClassifier(learning_rate=0.3, loss='log_loss',
-                                             max_depth=19, max_leaf_nodes=24, min_samples_leaf=15,
+    gbc_tunning = GradientBoostingClassifier(learning_rate=0.3, max_depth=19, max_leaf_nodes=24, min_samples_leaf=15,
                                              min_samples_split=8, n_estimators=250)
     gbc_tunning.fit(X_train_sap, y_train_sap)
 
