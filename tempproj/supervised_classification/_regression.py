@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-08 18:01:21
+LastEditTime : 2023-11-09 11:00:37
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -86,7 +86,7 @@ def Tele_Customer_Churn_0602(para_list):
     del desire_list[3]
     # print("after delete item:", desire_list)
     df_sample = exe.data_preprocessing.column_not_drop(df_2, desire_list)
-    print(df_sample.columns.tolist())
+    # print(df_sample.columns.tolist())
     sample_le = exe.data_preprocessing.fit_label_encode(
         df_sample, df_sample.columns)
     df_sample_columns = df_sample.columns.tolist()
@@ -95,7 +95,7 @@ def Tele_Customer_Churn_0602(para_list):
         [para_list[0], para_list[1], para_list[2],
          para_list[4], para_list[5], para_list[6], para_list[7],
          para_list[8]]).reshape(1, 8)))
-    print(test_sample.columns.tolist())
+    # print(test_sample.columns.tolist())
     transformed_sample_df = exe.data_preprocessing.transform_label_encode(
         test_sample, test_sample.columns, sample_le)
 
