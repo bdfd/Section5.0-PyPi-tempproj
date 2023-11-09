@@ -2,7 +2,7 @@
 Date         : 2023-10-25 14:17:09
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-09 11:00:37
+LastEditTime : 2023-11-09 15:26:11
 LastEditors  : BDFD
 Description  : 
 FilePath     : \tempproj\supervised_classification\_regression.py
@@ -99,8 +99,8 @@ def Tele_Customer_Churn_0602(para_list):
     transformed_sample_df = exe.data_preprocessing.transform_label_encode(
         test_sample, test_sample.columns, sample_le)
 
-    transformed_sample_df['tenure'] = para_list[3]
     transformed_sample_df['MonthlyCharges'] = para_list[9]
+    transformed_sample_df.insert(3, 'tenure', [para_list[3]])
     result = (gbc_tunning.predict(transformed_sample_df))[0]
 
     return result
