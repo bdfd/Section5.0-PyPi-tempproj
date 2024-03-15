@@ -24,13 +24,13 @@ def Banglore_Home_Price_Prediction_0603(para_list):
     model = make_pipeline(lr_clf)
     model.fit(X_train, y_train)
 
-    test_sample = np.zeros(len(X_train.columns))
+    input_sample = np.zeros(len(X_train.columns))
     loc_index = np.where(X_train.columns == para_list[3])[0][0]
-    test_sample[0] = para_list[0]
-    test_sample[1] = para_list[1]
-    test_sample[2] = para_list[2]
+    input_sample[0] = para_list[0]
+    input_sample[1] = para_list[1]
+    input_sample[2] = para_list[2]
     if loc_index >= 0:
-        test_sample[loc_index] = 1
+        input_sample[loc_index] = 1
     predict_price = model.predict([test_sample])[0]
     result = float(predict_price/100000)
     return result
