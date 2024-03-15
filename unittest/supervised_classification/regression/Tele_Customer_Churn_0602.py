@@ -2,10 +2,10 @@
 Date         : 2023-11-08 15:22:18
 Author       : BDFD,bdfd2005@gmail.com
 Github       : https://github.com/bdfd
-LastEditTime : 2023-11-08 18:07:11
-LastEditors  : BDFD
+LastEditTime : 2024-03-15 10:31:17
+LastEditors  : <BDFD>
 Description  : 
-FilePath     : \Tele_Customer_Churn_0602.py
+FilePath     : \unittest\supervised_classification\regression\Tele_Customer_Churn_0602.py
 Copyright (c) 2023 by BDFD, All Rights Reserved. 
 '''
 # '''
@@ -45,7 +45,7 @@ PaymentMethod = 'Mailed Cheque'
 para_list.append(PaymentMethod)
 MonthlyCharges = 79.75
 para_list.append(MonthlyCharges)
-# print(para_list)
+print(para_list)
 result = temp.supervised_classification.Tele_Customer_Churn_0602(para_list)
 # print(transformed_sample_df)
 # result = model.predict(transformed_sample_df)

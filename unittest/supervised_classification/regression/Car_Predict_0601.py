@@ -24,6 +24,7 @@ kms_driven = 100
 para_list.append(kms_driven)
 fuel_type = 'Petrol'
 para_list.append(fuel_type)
+print(para_list)
 result = temp.supervised_classification.Car_Prediction_0601(para_list)
 print(result)
 print(type(result))
