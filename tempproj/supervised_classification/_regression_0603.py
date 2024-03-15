@@ -31,6 +31,13 @@ def Banglore_Home_Price_Prediction_0603(para_list):
     input_sample[2] = para_list[2]
     if loc_index >= 0:
         input_sample[loc_index] = 1
-    predict_price = model.predict([test_sample])[0]
-    result = float(predict_price/100000)
+    # print(input_sample.shape)
+    input_sample.reshape(1, 257)
+
+    df_sample_columns = X_train.columns.tolist()
+    # len(df_sample_columns)
+    test_sample = pd.DataFrame(columns=df_sample_columns,
+                               data=np.array(input_sample).reshape(1, len(df_sample_columns)))
+    predict_price = model.predict(test_sample)[0]
+    result = round(float(predict_price/100000), 2)
     return result
